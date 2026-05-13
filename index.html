@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Dekho</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Nunito:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Animated sky background (fallback if no video) -->
+  <div class="sky-bg">
+    <div class="star" style="--x:10%;--y:15%;--d:2.8s;--s:2px"></div>
+    <div class="star" style="--x:25%;--y:8%; --d:1.9s;--s:1px"></div>
+    <div class="star" style="--x:40%;--y:20%;--d:3.2s;--s:2px"></div>
+    <div class="star" style="--x:55%;--y:5%; --d:2.1s;--s:1px"></div>
+    <div class="star" style="--x:70%;--y:18%;--d:2.7s;--s:3px"></div>
+    <div class="star" style="--x:85%;--y:10%;--d:1.6s;--s:2px"></div>
+    <div class="star" style="--x:92%;--y:25%;--d:3.5s;--s:1px"></div>
+    <div class="star" style="--x:5%; --y:40%;--d:2.3s;--s:2px"></div>
+    <div class="star" style="--x:18%;--y:55%;--d:1.8s;--s:1px"></div>
+    <div class="star" style="--x:30%;--y:35%;--d:3.0s;--s:2px"></div>
+    <div class="star" style="--x:60%;--y:45%;--d:2.5s;--s:1px"></div>
+    <div class="star" style="--x:75%;--y:30%;--d:1.7s;--s:3px"></div>
+    <div class="star" style="--x:88%;--y:50%;--d:2.9s;--s:2px"></div>
+  </div>
+
+  <!-- Optional: your video background -->
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="./assets/bg.mp4" type="video/mp4" />
+  </video>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <span class="logo-icon">🌤</span>
+      <span class="logo-text">Weather Dekho</span>
+    </div>
+    <nav class="navbar">
+      <a href="#" class="nav-link active">Home</a>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main class="main-content">
+
+    <!-- Search Card -->
+    <div class="search-card glass-card" id="search-card">
+      <h1 class="app-title">Weather Dashboard</h1>
+      <p class="app-subtitle">Real-time weather for any city in the world</p>
+
+      <form id="weather-form" class="search-form">
+        <div class="input-wrapper">
+          <span class="input-icon">🔍</span>
+          <input
+            type="text"
+            id="city"
+            placeholder="Enter city name…"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <button type="submit" id="search-btn">
+          <span class="btn-text">Search</span>
+          <span class="btn-loader" id="btn-loader"></span>
+        </button>
+      </form>
+
+      <p class="error-msg" id="error-msg"></p>
+    </div>
+
+    <!-- Weather Result Card (hidden until data loads) -->
+    <div class="weather-card glass-card" id="weather-card" style="display:none;">
+
+      <!-- Top: city + date -->
+      <div class="weather-header">
+        <div>
+          <h2 class="city-name" id="city-name">—</h2>
+          <p class="city-date" id="city-date">—</p>
+        </div>
+        <div class="weather-icon-wrap">
+          <img id="weather-icon" src="" alt="Weather icon" />
+        </div>
+      </div>
+
+      <!-- Big temperature -->
+      <div class="temp-display">
+        <span class="temp-value" id="temp-value">—</span>
+        <span class="temp-unit">°C</span>
+      </div>
+      <p class="condition-label" id="condition-label">—</p>
+
+      <!-- Divider -->
+      <div class="divider"></div>
+
+      <!-- Stats grid -->
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-icon">💧</span>
+          <span class="stat-value" id="humidity">—</span>
+          <span class="stat-label">Humidity</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon">💨</span>
+          <span class="stat-value" id="wind">—</span>
+          <span class="stat-label">Wind</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon">👁</span>
+          <span class="stat-value" id="visibility">—</span>
+          <span class="stat-label">Visibility</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon">🌡</span>
+          <span class="stat-value" id="feels-like">—</span>
+          <span class="stat-label">Feels Like</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon">🔽</span>
+          <span class="stat-value" id="temp-min">—</span>
+          <span class="stat-label">Min Temp</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-icon">🔼</span>
+          <span class="stat-value" id="temp-max">—</span>
+          <span class="stat-label">Max Temp</span>
+        </div>
+      </div>
+
+      <!-- Search again -->
+      <button class="search-again-btn" id="search-again-btn">Search Another City</button>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span>© 2024 Weather Dekho &nbsp;·&nbsp; Powered by OpenWeatherMap</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
